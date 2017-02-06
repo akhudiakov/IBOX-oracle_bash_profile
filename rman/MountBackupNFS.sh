@@ -16,7 +16,7 @@ case $1 in
       local BACKUP_HOST=
     ;;
 	DUREMAR)
-      local BACKUP_HOST=
+      local BACKUP_HOST=192.168.99.10
     ;;
     *)
       echo "There is no mountpoint defined for ${1} database."
