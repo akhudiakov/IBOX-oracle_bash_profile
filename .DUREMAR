@@ -1,0 +1,64 @@
+################################################################################
+## Configurable Oracle Parameters
+################################################################################
+export ORACLE_SID=DUREMAR
+export DB_UNIQUE_NAME=DUREMAR
+export ORACLE_UNQNAME=DUREMAR
+export DB_NAME=DUREMAR
+export ORACLE_OWNER=oracle
+export ORACLE_BASE=/u01/app/oracle
+export ORACLE_HOME=$ORACLE_BASE/product/11.2.0.4/db_1
+export ORACLE_ADMIN=$ORACLE_BASE/admin
+export NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+export GG_HOME=$ORACLE_BASE/product/ggate
+
+
+
+################################################################################
+## Configurable Default Paths
+################################################################################
+
+
+
+################################################################################
+## Configurable default text editor
+################################################################################
+export EDITOR=vi
+
+
+################################################################################
+## STATIC VARIBLE SECTION                                                     ##
+################################################################################
+
+
+# Static Oracle Parameters based on above configurable parameters
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$GG_HOME:$LD_LIBRARY_PATH
+export ORACLE_PATH=$ORACLE_HOME/bin
+export TNS_ADMIN=$ORACLE_HOME/network/admin
+export LOG_DIR=${ORACLE_BASE}/log
+export NLS_DATE_FORMAT='DD-MM-YYYY HH24:MI:SS'
+
+# Additional Paths based on above configurable parameters
+export PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch:$GG_HOME:$HOME/local:$HOME/local/sh:$PATH
+export SQLPATH=$HOME/local/sql
+
+# For the "oracle" user, ensure the following variables are unset
+unset TWO_TASK
+
+# Mail
+export EMAIL_DBA='a.khudyakov@ibox.ua, andrey.hudyakov@gmail.com'
+export _mail_from=${ORACLE_SID}@${HOSTNAME}
+
+# Aliases
+alias pse='ps -ef|grep -v grep|grep'
+alias nets='netstat -natep|grep'
+
+################################################################################
+## BACKUP SETTINGS                                                            
+################################################################################
+
+export BACKUP_DIST=/mnt/orabackup/${DB_NAME}
+export RMAN_LOG=${LOG_DIR}/rman
+export _rman_dbf=${BACKUP_DIST}/datafile
+export _rman_arc=${BACKUP_DIST}/archivelog
+export _rman_ctr_spf=${BACKUP_DIST}/ctrl_spfile
